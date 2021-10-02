@@ -1,15 +1,11 @@
 #!/usr/bin/env python3
 
-import logging
 import os
 import sys
 
-if __name__ == '__main__':
-  # Get a logger.
-  logger = logging.getLogger('build.py')
-
+def install(logger, project_dir):
   # Work out build dir path.
-  build_dir = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'build'))
+  build_dir = os.path.abspath(os.path.join(project_dir, 'build'))
 
   try:
     # Set current directory to build dir.
@@ -19,8 +15,10 @@ if __name__ == '__main__':
     sys.exit(1)
 
   # Build using cmake.
-  logger.info(f"Installing...")
+  logger.info(f":: Installing ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
   exit_code = os.system("cmake --install .")
 
   # Done.
-  sys.exit(exit_code)
+  return exit_code
+
+__all__ = [install]
