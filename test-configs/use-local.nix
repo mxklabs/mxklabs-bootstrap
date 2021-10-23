@@ -1,5 +1,5 @@
 let
-  mxklabs-pkgs = import ../../mxklabs-pkgs/default.nix /*<mxklabs>*/ { overlays = [ overlay ]; };
+  mxklabs-pkgs = import /*../../mxklabs-pkgs/default.nix*/ <mxklabs> { overlays = [ overlay ]; };
   overlay = final: prev: {
     mxklabs-example-cpp-app = prev.mxklabs-example-cpp-app.overrideAttrs (oldAttrs: {
         src = ../../mxklabs-example-cpp-app;
